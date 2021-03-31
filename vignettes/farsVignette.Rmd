@@ -1,0 +1,88 @@
+---
+title: "farsVignette"
+author: "Shuvrarghya Ghosh"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{farsVignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## make_filename() function 
+This code block demonstrates how this function reproduces the names of the files of the actual datasets given the year of record. The source of the datasets is the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System <href> https://www.nhtsa.gov/Data/Fatality-Analysis-Reporting-System-(FARS)
+
+```{r demonstrate_make_filename}
+library(farsdata)
+file1 <- make_filename(2013)
+file2 <- make_filename(2014)
+file3 <- make_filename(2015)
+print(file1)
+print(file2)
+print(file3)
+```
+
+## Use of system.file()
+Access the datasets from the external data file of the package.
+```{r access_extdata, eval = FALSE}
+
+system.file("extdata", file1, package = "farsdata")
+system.file("extdata", file2, package = "farsdata")
+system.file("extdata", file2, package = "farsdata")
+
+```
+
+## fars_read() function
+This block of code shows how fars_read function reads a data file into the system.
+```{r demonstrate_fars_read}
+acc_2015 <- fars_read(file3)
+acc_2014 <- fars_read(file2)
+acc_2013 <- fars_read(file1)
+```
+
+```{r error1}
+#fars_read(make_filename(2020)) 
+# An error is generated in this case
+```
+
+## Features of the Datasets
+Here, I enlisted several features that each dataset has using the **names** function.
+```{r features_of_the_datasets}
+names(acc_2013) # features of the 2013 data set
+names(acc_2014) # features of the 2014 data set
+names(acc_2015) # features of the 2015 data set
+```
+
+## fars_read_years() function
+This block demonstrates the functionality of fars_read_years function.
+```{r demo_fars_read_years}
+years <- 2013:2015  # list of years
+fars_read_years(years)
+```
+
+## fars_summarize_years() function
+This block demonstrates the functionality of fars_summarize_years function. This provides a tabulated ditribution of total number of fatalities in each month of each of the year in **years** list of years.
+```{r demo_fars_summarize_years}
+years <- 2013:2015  # list of years
+fars_summarize_years(years)
+```
+
+## fars_map_state() function
+The idea behind this function is to plot the location of accidents on the map of the corresponding US state for the corresponding year. An invalid state number or year shall result in an error!
+```{r demo_fars_map_state}
+fars_map_state(48, 2013)  # plot returned
+```
+```{r}
+fars_map_state(56, 2014)  # plot returned
+```
+```{r}
+# An error raised for invalid state number 82
+#fars_map_state(82, 2013)
+```
