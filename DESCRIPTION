@@ -20,3 +20,5 @@ Suggests:
     rmarkdown,
     testthat
 VignetteBuilder: knitr
+URL: https://github.com/Noob-Programr/farsdata
+BugReports: https://github.com/Noob-Programr/farsdata/issues
