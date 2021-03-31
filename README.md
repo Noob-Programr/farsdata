@@ -4,7 +4,7 @@
 # farsdata
 
 <!-- badges: start -->
-
+[![Travis build status](https://travis-ci.com/Noob-Programr/farsdata.svg?branch=master)](https://travis-ci.com/Noob-Programr/farsdata)
 <!-- badges: end -->
 
 The goal of farsdata is to provide functions that will be using data

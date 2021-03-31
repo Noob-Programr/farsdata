@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # farsdata
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.com/Noob-Programr/farsdata.svg?branch=master)](https://travis-ci.com/Noob-Programr/farsdata)
 <!-- badges: end -->
 
 The goal of farsdata is to provide functions that will be using data from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes, to plot
